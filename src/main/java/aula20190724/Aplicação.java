@@ -1,4 +1,4 @@
-package aula20190729;
+package aula20190724;
 
 public class Aplicação {
 	
@@ -7,8 +7,8 @@ public class Aplicação {
 		Rua avBrasil = new Rua("Avenida Brasil");
 		Rua avGuedner = new Rua("Avenida Guedner");		
 		
-		maringá.adicionarRua(avBrasil);	
-		maringá.adicionarRua(avGuedner);		
+		maringá.adicionarRua(avBrasil);
+		maringá.adicionarRua(avGuedner);
 		maringá.adicionarRua(new Rua("Rua Santos Dummont"));
 		
 		listarRuasDaCidadeNoConsole(maringá);
@@ -17,14 +17,8 @@ public class Aplicação {
 		//Veja no getRuas da classe Cidade a explicação detalhada com as opções de implementação.
 		//maringá.getRuas().remove(avBrasil);
 		
-		System.out.println("O nome da cidade da Av.Brasil é: " + avBrasil.getCidade().getNome());
-		System.out.println("O nome da cidade da Av.Guedner é: " + avGuedner.getCidade().getNome());
-		
 		maringá.removerRua(avGuedner);
 		listarRuasDaCidadeNoConsole(maringá);
-
-		System.out.println("O nome da cidade da Av.Brasil é: " + avBrasil.getCidade().getNome());
-		System.out.println("O nome da cidade da Av.Guedner é: " + avGuedner.getCidade().getNome());
 
 		
 		System.out.println("Foi.");		

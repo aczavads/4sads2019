@@ -1,4 +1,4 @@
-package aula20190729;
+package aula20190724;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -27,16 +27,10 @@ public class Cidade {
 	
 	public void removerRua(Rua r) {
 		this.ruas.remove(r);
-		r.removerCidade();
 	}
 	
 	public void adicionarRua(Rua r) {
-		if (!this.ruas.contains(r)) {
-			System.out.println("Adicionando a rua na cidade...");				
-			this.ruas.add(r);
-			r.adicionarCidade(this);
-		}
-		
+		this.ruas.add(r);
 	}	
 	
 	public Set<Rua> getRuas() {
