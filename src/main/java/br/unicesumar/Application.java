@@ -24,7 +24,8 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {		
-		Cidade maringá = new Cidade("Maringá","MGA");
+		Cidade maringá = repoCidade.save(new Cidade("Maringá","MGA"));
+		System.out.println(maringá.getId());
 		
 		Rua avBrasil = repoRua.save(new Rua("Avenida Brasil"));
 		Rua avGuedner = repoRua.save(new Rua("Avenida Guedner"));
@@ -33,8 +34,6 @@ public class Application implements CommandLineRunner {
 		maringá.adicionarRua(avGuedner);
 		
 		repoCidade.save(maringá);
-		
-		
 		
 		System.out.println("Foi.");
 	}

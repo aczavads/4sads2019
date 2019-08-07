@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,11 +20,12 @@ public class Cidade {
 	private Long id;
 	private String nome;
 	private String sigla;
-	@OneToMany
+	@OneToMany(mappedBy="cidade", cascade=CascadeType.ALL)
 	private Set<Rua> ruas = new HashSet<>();
 	
 	public void adicionarRua(Rua r) {
 		this.ruas.add(r);
+		r.setCidade(this);
 	}
 	
 	public void removerRua(Rua r) {
