@@ -1,4 +1,4 @@
-package br.unicesumar.cidade;
+package br.unicesumar.rua;
 
 import java.util.List;
 
@@ -9,19 +9,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.unicesumar.rua.Rua;
+import br.unicesumar.rua.RuaRepository;
+
 @RestController
-@RequestMapping("/api/cidades")
-public class CidadeController {
+@RequestMapping("/api/ruas")
+public class RuaController {
 	@Autowired
-	private CidadeRepository repo;
+	private RuaRepository repo;
 	
 	@GetMapping
-	public List<Cidade> get() {
+	public List<Rua> get() {
 		return repo.findAll();
 	}
 	
 	@PostMapping
-	public Long post(@RequestBody Cidade nova) {
+	public Long post(@RequestBody Rua nova) {
 		nova = repo.save(nova);
 		return nova.getId();
 	}
