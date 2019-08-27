@@ -5,13 +5,18 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import br.unicesumar.cidade.Cidade;
+import br.unicesumar.cidade.CidadeRepository;
 import br.unicesumar.rua.Rua;
 import br.unicesumar.rua.RuaRepository;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 	@Autowired
-	private RuaRepository repo;
+	private RuaRepository repoRua;
+
+	@Autowired
+	private CidadeRepository repoCidade;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -19,19 +24,16 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {		
-		repo.save(new Rua("Av. Guedner"));
+		Cidade maringá = repoCidade.save(new Cidade("Maringá","MGA"));
+		System.out.println(maringá.getId());
 		
-		Rua rua1 = repo.findById(1L).get();
-		rua1.setNome("Xiii " + System.currentTimeMillis());
+		Rua avBrasil = repoRua.save(new Rua("Avenida Brasil"));
+		Rua avGuedner = repoRua.save(new Rua("Avenida Guedner"));
 		
-		repo.save(rua1);
+		maringá.adicionarRua(avBrasil);
+		maringá.adicionarRua(avGuedner);
 		
-		for (Rua rua : repo.findAll()) {
-			System.out.println(rua.getNome());
-		}
-		
-		//continuar aqui com a classe cor...
-		//Have fun! :D
+		repoCidade.save(maringá);
 		
 		System.out.println("Foi.");
 	}
