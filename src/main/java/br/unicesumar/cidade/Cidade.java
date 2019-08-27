@@ -31,6 +31,7 @@ public class Cidade {
 	public void removerRua(Rua r) {
 		this.ruas.remove(r);
 	}
+
 	
 	public Set<Rua> getRuas() {
 		return Collections.unmodifiableSet(ruas);
