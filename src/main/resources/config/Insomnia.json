@@ -1,0 +1,171 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2019-08-28T23:30:41.353Z",
+	"__export_source": "insomnia.desktop.app:v6.0.2",
+	"resources": [
+		{
+			"_id": "wrk_f4e6e7165f3649758b410369eddcab73",
+			"created": 1548092741201,
+			"description": "",
+			"modified": 1548092741201,
+			"name": "Insomnia",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_75c092f695d745a795ac648cf30c0fcc",
+			"color": null,
+			"created": 1548092741229,
+			"data": {},
+			"isPrivate": false,
+			"metaSortKey": 1548092741230,
+			"modified": 1548092741229,
+			"name": "New Environment",
+			"parentId": "wrk_f4e6e7165f3649758b410369eddcab73",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_15893c298c3c428e9f3ac42e25285bc8",
+			"cookies": [],
+			"created": 1548092741231,
+			"modified": 1548092741231,
+			"name": "Default Jar",
+			"parentId": "wrk_f4e6e7165f3649758b410369eddcab73",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "req_bd46ac2e47c24e8987ed06b32b8c3bb2",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"id\": \"7f20faf0-3aff-47f2-afeb-b1f41dfa56f0\",\n\t\"nome\": \"Maringá\",\n\t\"sigla\": \"MGA\",\n\t\"ruas\": [\n\t\t{\"nome\": \"Av. Guedner\"},\n\t\t{\"nome\": \"Av. São Domingos\"},\n\t\t{\"nome\": \"Rua Néo Alves Martins\"}\n\t]\n}"
+			},
+			"created": 1567030784842,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_d64a6d077030431eb6ad6e5e3b203ac0",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1567030784842,
+			"method": "POST",
+			"modified": 1567034736160,
+			"name": "nova cidade",
+			"parameters": [],
+			"parentId": "wrk_f4e6e7165f3649758b410369eddcab73",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:9092/api/cidades",
+			"_type": "request"
+		},
+		{
+			"_id": "req_6d702f1cca8f4d78acaf136d407d928e",
+			"authentication": {},
+			"body": {},
+			"created": 1567030846002,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1567030846002,
+			"method": "GET",
+			"modified": 1567034896510,
+			"name": "obter cidades",
+			"parameters": [],
+			"parentId": "wrk_f4e6e7165f3649758b410369eddcab73",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:9092/api/cidades",
+			"_type": "request"
+		},
+		{
+			"_id": "req_6fa39c32210347949c364549ded64d6c",
+			"authentication": {},
+			"body": {},
+			"created": 1567030893025,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1567030893025,
+			"method": "GET",
+			"modified": 1567034899641,
+			"name": "obter ruas",
+			"parameters": [],
+			"parentId": "wrk_f4e6e7165f3649758b410369eddcab73",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:9092/api/ruas",
+			"_type": "request"
+		},
+		{
+			"_id": "req_d866eb3894904d6abffb521f364927c6",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"nome\": \"Av. Brasil\",\n\t\"cidade\": {\"id\":1}\n}"
+			},
+			"created": 1567030908967,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_9e4234d42d634d56bf730ec63a7b962a",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1567030908967,
+			"method": "POST",
+			"modified": 1567034590855,
+			"name": "criar rua",
+			"parameters": [],
+			"parentId": "wrk_f4e6e7165f3649758b410369eddcab73",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:9092/api/ruas",
+			"_type": "request"
+		},
+		{
+			"_id": "req_5224cd6a519b437abd33d56d67f3e684",
+			"authentication": {},
+			"body": {},
+			"created": 1567031512942,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1567031512942,
+			"method": "DELETE",
+			"modified": 1567034725646,
+			"name": "excluir cidade",
+			"parameters": [],
+			"parentId": "wrk_f4e6e7165f3649758b410369eddcab73",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:9092/api/cidades/7f20faf0-3aff-47f2-afeb-b1f41dfa56f0",
+			"_type": "request"
+		}
+	]
+}
