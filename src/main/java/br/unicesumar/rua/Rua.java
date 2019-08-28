@@ -1,12 +1,11 @@
 package br.unicesumar.rua;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import br.unicesumar.cidade.Cidade;
 
@@ -14,15 +13,17 @@ import br.unicesumar.cidade.Cidade;
 public class Rua {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private String id;
 
 	@ManyToOne
+	@JoinColumn(name="cidade_id",nullable=false)
 	private Cidade cidade;
 
 	private String nome;
 
 	public Rua() {
+		id = UUID.randomUUID().toString();
 	}
 
 	public Rua(String nome) {
@@ -33,7 +34,7 @@ public class Rua {
 		return nome;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -43,5 +44,8 @@ public class Rua {
 
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
+	}
+	public String getCidade_id() {
+		return cidade.getId();
 	}
 }

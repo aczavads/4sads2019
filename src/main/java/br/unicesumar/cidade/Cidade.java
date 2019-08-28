@@ -3,6 +3,7 @@ package br.unicesumar.cidade;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,8 +17,8 @@ import br.unicesumar.rua.Rua;
 @Entity
 public class Cidade {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private Long id;
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	private String id;
 	private String nome;
 	private String sigla;
 	@OneToMany(mappedBy="cidade", cascade=CascadeType.ALL)
@@ -38,7 +39,7 @@ public class Cidade {
 	}
 	
 	public Cidade() {
-		
+		id = UUID.randomUUID().toString();
 	}
 	
 	public Cidade(String nome, String sigla) {
@@ -46,7 +47,7 @@ public class Cidade {
 		this.nome = nome;
 	}
 	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 	public String getNome() {

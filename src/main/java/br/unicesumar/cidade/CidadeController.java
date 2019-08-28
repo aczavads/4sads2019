@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.unicesumar.rua.Rua;
+
 @RestController
 @RequestMapping("/api/cidades")
 public class CidadeController {
@@ -23,13 +25,18 @@ public class CidadeController {
 	}
 	
 	@PostMapping
-	public Long post(@RequestBody Cidade nova) {
+	public String post(@RequestBody Cidade nova) {		
+		for (Rua r : nova.getRuas()) {
+			r.setCidade(nova);
+		}
+		
+		
 		nova = repo.save(nova);
 		return nova.getId();
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable("id") Long id) {
+	public void delete(@PathVariable("id") String id) {
 		repo.deleteById(id);
 	}
 

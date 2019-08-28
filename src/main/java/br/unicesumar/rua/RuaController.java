@@ -24,7 +24,7 @@ public class RuaController {
 	}
 	
 	@PostMapping
-	public Long post(@RequestBody Rua nova) {
+	public String post(@RequestBody Rua nova) {
 		nova = repo.save(nova);
 		return nova.getId();
 	}
