@@ -1,5 +1,7 @@
 package br.unicesumar.produto;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -22,10 +25,23 @@ public class ProdutoController {
 	public List<Produto> getAll() {
 		return repo.findAll();
 	}
+	@GetMapping("/porPreco")
+	public List<Produto> getAll(@RequestParam("preco") double preco) {
+		return repo.findByPreco(preco);
+	}
 	
-	@GetMapping("/consultarProdutoDeMaiorPreco")
-	public List<Produto> getProdutoDeMaiorPreco() {
+	@GetMapping("/consultarProdutosDeMaiorPreco")
+	public List<Produto> getProdutosDeMaiorPreco() {
 		return repo.consultarProdutoDeMaiorPreco();
+	}
+	
+	@GetMapping("/consultarProdutosDeMenorPreco")
+	public List<Produto> getProdutosDeMenorPreco() {
+		return repo.consultarProdutoDeMenorPreco();
+	}
+	@GetMapping("/consultarPrecoMedio")
+	public BigDecimal getPrecoMedio() {
+		return repo.consultarPrecoMedio().setScale(2, RoundingMode.DOWN);
 	}
 	
 
