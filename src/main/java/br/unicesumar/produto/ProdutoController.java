@@ -22,6 +22,12 @@ public class ProdutoController {
 	public List<Produto> getAll() {
 		return repo.findAll();
 	}
+	
+	@GetMapping("/consultarProdutoDeMaiorPreco")
+	public List<Produto> getProdutoDeMaiorPreco() {
+		return repo.consultarProdutoDeMaiorPreco();
+	}
+	
 
 	@GetMapping("/{id}")
 	public Produto getById(@PathVariable("id") String id) {
