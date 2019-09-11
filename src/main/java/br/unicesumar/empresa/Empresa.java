@@ -17,6 +17,13 @@ public class Empresa {
 	private ContratoSocial contratoSocial;
 	
 	
+	
+	
+	
+	
+	
+	
+	
 	public Empresa() {
 		id = UUID.randomUUID().toString();
 	}
