@@ -32,5 +32,20 @@ public class TestesBásicos {
 		assertEquals("Maior incorreto!", 500, maiorB, 0.00);
 	}
 
+	@Test(expected=ArrayVazioException.class)
+	public void encontrar_maior_valor_no_array_vazio() {
+		double maiorA = Utilitário.encontrarMaior(new double[]{});		
+	}
+	
+	@Test
+	public void inverter_string() {
+		String stringA = Utilitário.inverter("roxo");
+		String stringB = Utilitário.inverter("rosa");
+		
+		assertEquals("oxor", stringA);
+		assertEquals("asor", stringB);
+		
+	}
+	
 
 }
