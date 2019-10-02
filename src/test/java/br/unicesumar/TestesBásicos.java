@@ -19,8 +19,18 @@ public class TestesBásicos {
 		double somaA = Utilitário.somar(10.0,30.0,10.00,10.00,20.00);
 		double somaB = Utilitário.somar(701.01,-1.01, -1);
 		
-		assertEquals("A soma está incorreta!", 40, somaA, 0.00);
+		assertEquals("A soma está incorreta!", 80, somaA, 0.00);
 		assertEquals("A soma está incorreta!!", 699, somaB, 0.00);
 	}
+	
+	@Test
+	public void encontrar_maior_valor_no_array() {		
+		double maiorA = Utilitário.encontrarMaior(new double[]{10,50,55.55,3,3.27,15,60,12,14});
+		double maiorB = Utilitário.encontrarMaior(new double[]{1,500,55.55,3,3.27,15,60});
+		
+		assertEquals("Maior incorreto!", 60, maiorA, 0.00);
+		assertEquals("Maior incorreto!", 500, maiorB, 0.00);
+	}
+
 
 }
