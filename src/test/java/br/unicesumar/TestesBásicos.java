@@ -43,8 +43,7 @@ public class TestesBásicos {
 		String stringB = Utilitário.inverter("rosa");
 		
 		assertEquals("oxor", stringA);
-		assertEquals("asor", stringB);
-		
+		assertEquals("asor", stringB);		
 	}
 	
 
