@@ -1,11 +1,16 @@
 package br.unicesumar.pessoa;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -16,8 +21,17 @@ public abstract class Pessoa {
 	private UUID id;
 	private String nome;
 
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="pessoa_id")
+	private List<Endereco> enderecos;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="pessoa_id")
+	private List<Papel> papeis;
+
 	public Pessoa() {
 		id = UUID.randomUUID();
+		enderecos = new ArrayList<>();
 	}
 
 	public Pessoa(String nome) {
@@ -35,6 +49,22 @@ public abstract class Pessoa {
 
 	public UUID getId() {
 		return id;
+	}
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void addEndereco(Endereco e) {
+		enderecos.add(e);
+	}
+	
+	public List<Papel> getPapeis() {
+		return papeis;
+	}
+
+	public void addPapel(Papel p) {
+		papeis.add(p);
 	}
 
 }
