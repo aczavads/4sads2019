@@ -5,6 +5,7 @@ import org.junit.Test;
 
 public class TestesBásicos {
 
+	/*
 	@Test
 	public void testar_somar_dois_números() {		
 		double somaA = Utilitário.somar(10.0,30.0);
@@ -45,6 +46,26 @@ public class TestesBásicos {
 		assertEquals("oxor", stringA);
 		assertEquals("asor", stringB);		
 	}
+	*/
+	
+	@Test
+	public void inverter_lista_encadeada() {
+		Elemento primeiro = new Elemento("A");
+		Elemento segundo = new Elemento("B");
+		Elemento terceiro = new Elemento("C");
+		Elemento quarto = new Elemento("D");
+		primeiro.setProximo(segundo);
+		segundo.setProximo(terceiro);
+		terceiro.setProximo(quarto);
+		
+		Elemento primeiroInvertido = Utilitário.inverter(primeiro);
+		
+		assertEquals(primeiroInvertido.getValor(), "D");
+		assertEquals(primeiroInvertido.getProximo().getValor, "C");
+		assertEquals(primeiroInvertido.getProximo().getProximo().getValor, "B");
+		assertEquals(primeiroInvertido.getProximo().getProximo().getProximo().getValor, "A");
+	}
+
 	
 
 }
