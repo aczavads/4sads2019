@@ -16,14 +16,6 @@ public class Empresa {
 	@OneToOne(cascade=CascadeType.ALL)
 	private ContratoSocial contratoSocial;
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	public Empresa() {
 		id = UUID.randomUUID().toString();
 	}

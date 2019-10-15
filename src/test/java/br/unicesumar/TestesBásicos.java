@@ -5,7 +5,6 @@ import org.junit.Test;
 
 public class TestesBásicos {
 
-	/*
 	@Test
 	public void testar_somar_dois_números() {		
 		double somaA = Utilitário.somar(10.0,30.0);
@@ -46,24 +45,26 @@ public class TestesBásicos {
 		assertEquals("oxor", stringA);
 		assertEquals("asor", stringB);		
 	}
-	*/
 	
 	@Test
 	public void inverter_lista_encadeada() {
+		Elemento primeirão = new Elemento("a");
 		Elemento primeiro = new Elemento("A");
 		Elemento segundo = new Elemento("B");
 		Elemento terceiro = new Elemento("C");
 		Elemento quarto = new Elemento("D");
+		primeirão.setProximo(primeiro);
 		primeiro.setProximo(segundo);
 		segundo.setProximo(terceiro);
 		terceiro.setProximo(quarto);
 		
-		Elemento primeiroInvertido = Utilitário.inverter(primeiro);
+		Elemento primeiroInvertido = Utilitário.inverter(primeirão);
 		
-		assertEquals(primeiroInvertido.getValor(), "D");
-		assertEquals(primeiroInvertido.getProximo().getValor, "C");
-		assertEquals(primeiroInvertido.getProximo().getProximo().getValor, "B");
-		assertEquals(primeiroInvertido.getProximo().getProximo().getProximo().getValor, "A");
+		assertEquals("D", primeiroInvertido.getValor());
+		assertEquals("C", primeiroInvertido.getProximo().getValor());
+		assertEquals("B", primeiroInvertido.getProximo().getProximo().getValor());
+		assertEquals("A", primeiroInvertido.getProximo().getProximo().getProximo().getValor());
+		assertEquals("a", primeiroInvertido.getProximo().getProximo().getProximo().getProximo().getValor());
 	}
 
 	

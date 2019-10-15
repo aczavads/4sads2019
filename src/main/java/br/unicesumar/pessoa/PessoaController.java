@@ -41,5 +41,11 @@ public class PessoaController {
 		pessoa.addPapel(papel);
 		repo.save(pessoa);
 	}
+	@PostMapping("/{id}/aluno")
+	public void post(@PathVariable UUID id, @RequestBody Aluno papel) {
+		Pessoa pessoa = repo.findById(id).get();
+		pessoa.addPapel(papel);
+		repo.save(pessoa);
+	}
 
 }
