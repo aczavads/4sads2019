@@ -1,4 +1,4 @@
-package br.unicesumar.pessoa;
+package br.unicesumar.pessoa.papel;
 
 import java.util.UUID;
 
@@ -11,13 +11,13 @@ import javax.persistence.InheritanceType;
 @Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Papel {
 	@Id
-	private UUID id;
+	private String id;
 	
 	public Papel() {
-		id = UUID.randomUUID();
+		id = UUID.randomUUID().toString();
 	}
 	
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 	

@@ -12,13 +12,15 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import br.unicesumar.pessoa.papel.Papel;
+
 @Entity
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Pessoa {
 	@Id
-	private UUID id;
+	private String id;
 	private String nome;
 
 	@OneToMany(cascade = CascadeType.ALL)
@@ -30,7 +32,7 @@ public abstract class Pessoa {
 	private List<Papel> papeis;
 
 	public Pessoa() {
-		id = UUID.randomUUID();
+		id = UUID.randomUUID().toString();
 		enderecos = new ArrayList<>();
 	}
 

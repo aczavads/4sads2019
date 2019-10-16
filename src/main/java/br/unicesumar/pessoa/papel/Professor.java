@@ -1,4 +1,4 @@
-package br.unicesumar.pessoa;
+package br.unicesumar.pessoa.papel;
 
 import java.util.Date;
 

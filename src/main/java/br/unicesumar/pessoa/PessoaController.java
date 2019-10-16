@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.unicesumar.pessoa.papel.Aluno;
+import br.unicesumar.pessoa.papel.Empresa;
+import br.unicesumar.pessoa.papel.Professor;
+
 @RestController
 @RequestMapping("/api/pessoas")
 public class PessoaController {
@@ -44,6 +48,15 @@ public class PessoaController {
 	@PostMapping("/{id}/aluno")
 	public void post(@PathVariable UUID id, @RequestBody Aluno papel) {
 		Pessoa pessoa = repo.findById(id).get();
+		pessoa.addPapel(papel);
+		repo.save(pessoa);
+	}
+	@PostMapping("/{id}/empresa")
+	public void post(@PathVariable UUID id, @RequestBody Empresa papel) {
+		Pessoa pessoa = repo.findById(id).get();
+		if (pessoa instanceof Fisica) {
+			throw new RuntimeException("Pessoas físicas não podem ser empresas!");
+		}
 		pessoa.addPapel(papel);
 		repo.save(pessoa);
 	}

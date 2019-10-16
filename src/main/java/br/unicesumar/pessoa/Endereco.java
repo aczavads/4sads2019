@@ -8,14 +8,14 @@ import javax.persistence.Id;
 @Entity
 public class Endereco {
 	@Id
-	private UUID id;
+	private String id;
 	private String logradouro;
 	private String numero;
 	private String cep;
 	
 	
 	public Endereco() {
-		id = UUID.randomUUID();
+		id = UUID.randomUUID().toString();
 	}
 
 
@@ -49,7 +49,7 @@ public class Endereco {
 	}
 
 
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 	
