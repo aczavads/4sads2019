@@ -49,7 +49,7 @@ public abstract class Pessoa {
 		this.nome = nome;
 	}
 
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 

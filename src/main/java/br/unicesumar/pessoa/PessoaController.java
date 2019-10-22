@@ -28,13 +28,13 @@ public class PessoaController {
 	}
 	
 	@PostMapping("/fisicas")
-	public UUID post(@RequestBody Fisica nova) {
+	public String post(@RequestBody Fisica nova) {
 		repo.save(nova);
 		return nova.getId();
 	}
 	
 	@PostMapping("/juridicas")
-	public UUID post(@RequestBody Juridica nova) {
+	public String post(@RequestBody Juridica nova) {
 		repo.save(nova);
 		return nova.getId();
 	}
