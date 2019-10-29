@@ -3,6 +3,7 @@ package br.unicesumar.cidade;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +21,12 @@ public class CidadeController {
 	private CidadeRepository repo;
 	
 	@GetMapping
-	public List<Cidade> get() {
-		return repo.findAll();
+	public ResponseEntity<List<Cidade>> get() {
+		if (System.currentTimeMillis()%2==0) {
+			return ResponseEntity.status(-999).header("error", "Erro interno de propósito, só para testar! :D").build();
+		}
+		//return repo.findAll();
+		return ResponseEntity.ok(repo.findAll());
 	}
 	
 	@PostMapping
