@@ -5,6 +5,8 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,27 +26,38 @@ public class BaseController<ENTITY extends BaseEntity, REPOSITORY extends JpaRep
 	
 	@GetMapping
 	public List<ENTITY> getAll() {
+		if (System.currentTimeMillis()%2 == 0) {
+			throw new RuntimeException("Vixe!");
+		}
 		return repo.findAll();
 	}
 
 	@PostMapping
-	public String post(@RequestBody ENTITY obj) {
+	public ResponseEntity<String> post(@RequestBody ENTITY obj) {
+		if (repo.findById(obj.getId()).isPresent()) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		}
 		repo.save(obj);
-		return obj.getId();
+		return ResponseEntity.status(HttpStatus.CREATED).body(obj.getId());
 	}
 
 	@PutMapping("/{id}")
-	public void put(@PathVariable String id, @RequestBody ENTITY obj) {
+	public ResponseEntity<Void> put(@PathVariable String id, @RequestBody ENTITY obj) {
 
 		if (!Objects.equals(id, obj.getId())) {
-			throw new RuntimeException("Requisição inválida! Ids não conferem!");
+			return ResponseEntity.badRequest().build();
 		}
 		repo.save(obj);
+		return ResponseEntity.ok().build();
 	}
 
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable String id) {
+	public ResponseEntity<Void> delete(@PathVariable String id) {
+		if (repo.findById(id).isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
 		repo.deleteById(id);
+		return ResponseEntity.status(HttpStatus.GONE).build();
 	}
 
 }
